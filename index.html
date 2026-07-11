@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sudoku Solver</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="sudoku.js" defer></script>
+    <script src="main.js" defer></script>
+</head>
+
+<body>
+
+<main class="container">
+
+    <!-- ===============================
+            Header
+    ================================ -->
+
+    <header>
+
+        <h1>🧩 Sudoku Solver</h1>
+
+        <p class="subtitle">
+            Solve Sudoku puzzles using the Recursive Backtracking Algorithm
+        </p>
+
+    </header>
+
+    <!-- ===============================
+            Sudoku Board
+    ================================ -->
+
+    <section class="board-container">
+
+        <table id="sudoku-board">
+
+            <colgroup><col><col><col></colgroup>
+            <colgroup><col><col><col></colgroup>
+            <colgroup><col><col><col></colgroup>
+
+            <tbody>
+
+                <!-- Row 1 -->
+                <tr>
+                    <td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td>
+                    <td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td>
+                    <td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td>
+                </tr>
+
+                <!-- Row 2 -->
+                <tr>
+                    <td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td>
+                    <td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td>
+                    <td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td>
+                </tr>
+
+                <!-- Row 3 -->
+                <tr>
+                    <td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td>
+                    <td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td>
+                    <td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td>
+                </tr>
+
+                <!-- Row 4 -->
+                <tr>
+                    <td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td>
+                    <td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td>
+                    <td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td>
+                </tr>
+
+                <!-- Row 5 -->
+                <tr>
+                    <td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td>
+                    <td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td>
+                    <td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td>
+                </tr>
+
+                <!-- Row 6 -->
+                <tr>
+                    <td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td>
+                    <td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td>
+                    <td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td>
+                </tr>
+
+                <!-- Row 7 -->
+                <tr>
+                    <td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td>
+                    <td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td>
+                    <td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td>
+                </tr>
+
+                <!-- Row 8 -->
+                <tr>
+                    <td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td>
+                    <td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td>
+                    <td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td>
+                </tr>
+
+                <!-- Row 9 -->
+                <tr>
+                    <td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td>
+                    <td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td>
+                    <td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </section>
+
+    <!-- ===============================
+            Puzzle Buttons
+    ================================ -->
+
+    <section class="controls">
+
+        <button id="easy-button" class="easy-btn" type="button">Easy</button>
+
+        <button id="medium-button" class="medium-btn" type="button">Medium</button>
+
+        <button id="hard-button" class="hard-btn" type="button">Hard</button>
+
+    </section>
+
+    <!-- ===============================
+            Action Buttons
+    ================================ -->
+
+    <section class="controls">
+
+        <button id="solve-button" class="solve-btn" type="button">
+            Solve Sudoku
+        </button>
+
+        <button id="clear-button" class="clear-btn" type="button">
+            Clear Board
+        </button>
+
+    </section>
+
+    <!-- ===============================
+            Status Card
+    ================================ -->
+
+    <div id="status-card" class="status-card hidden">
+
+        <span id="status-icon"></span>
+
+        <div>
+
+            <h3 id="status-title"></h3>
+
+            <p id="status-message"></p>
+
+        </div>
+
+    </div>
+
+    <!-- ===============================
+            Statistics
+    ================================ -->
+
+    <section class="stats-card">
+
+        <h3>📊 Puzzle Statistics</h3>
+
+        <div class="stats-grid">
+
+            <div class="stat-item">
+                <span>Difficulty</span>
+                <strong id="difficulty">-</strong>
+            </div>
+
+            <div class="stat-item">
+                <span>Filled Cells</span>
+                <strong id="filled-cells">0</strong>
+            </div>
+
+            <div class="stat-item">
+                <span>Empty Cells</span>
+                <strong id="empty-cells">81</strong>
+            </div>
+
+            <div class="stat-item">
+                <span>Solve Time</span>
+                <strong id="solve-time">-</strong>
+            </div>
+
+            <div class="stat-item">
+                <span>Algorithm</span>
+                <strong>Recursive Backtracking</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+</body>
+</html>
