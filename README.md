@@ -1,10 +1,10 @@
-# 🧩 Sudoku Solver
+# Sudoku Solver
 
 An interactive web-based Sudoku Solver built using **HTML, CSS, and JavaScript**. The application solves Sudoku puzzles using the **Recursive Backtracking Algorithm** while providing a clean and responsive user interface.
 
 🔗 **Live Demo:** https://debaratiiii.github.io/SudokuSolver/
 
-## ✨ Features
+## Features
 
 - Solve Sudoku puzzles using the Recursive Backtracking algorithm
 - Manual puzzle entry
